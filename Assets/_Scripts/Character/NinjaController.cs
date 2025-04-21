@@ -53,6 +53,10 @@ public class NinjaController : MonoBehaviour
         if (direction != 0)
             transform.localScale = new Vector3(Mathf.Sign(direction), 1, 1);
     }
+    public void StopHorizontalMovement()
+    {
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+    }
 
     public void Jump()
     {

@@ -1,7 +1,5 @@
 using UnityEngine;
 
-using UnityEngine;
-
 public abstract class State
 {
     protected NinjaController ninja;

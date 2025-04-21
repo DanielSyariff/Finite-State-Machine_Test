@@ -446,7 +446,7 @@ Transform:
   m_GameObject: {fileID: 1510007317}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.44, z: 0}
+  m_LocalPosition: {x: -5.76, y: -1.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -468,7 +468,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -494,8 +494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1510007318}
   rb: {fileID: 1510007321}
-  moveSpeed: 5
-  jumpForce: 7
+  moveSpeed: 10
+  jumpForce: 9
   groundCheck: {fileID: 1633925436}
   groundCheckRadius: 0.2
   groundLayer:

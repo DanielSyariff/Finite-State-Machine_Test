@@ -1,25 +1,24 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AttackState : State
 {
-    private float attackTime = 0.5f;
-    private float timer;
-
     public AttackState(NinjaController ninja, Animator animator) : base(ninja, animator) { }
 
     public override void EnterState()
     {
+        if (ninja.IsGrounded())
+            ninja.StopHorizontalMovement();
         animator.Play("Attack");
-        timer = 0f;
     }
 
     public override void UpdateState()
     {
-        timer += Time.deltaTime;
-        if (timer >= attackTime)
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
         {
-            ninja.TransitionToState(ninja.idleState);
+            if (ninja.IsGrounded())
+                ninja.TransitionToState(ninja.idleState);
+            else
+                ninja.TransitionToState(ninja.jumpState);
         }
     }
 }
-
