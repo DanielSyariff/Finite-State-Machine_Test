@@ -8,7 +8,7 @@ public class JumpState : State
 
     public override void EnterState()
     {
-        animator.Play("Jump");
+        animator.SetTrigger("Jump");
         ninja.Jump();
         hasLeftGround = false;
     }

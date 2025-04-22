@@ -6,7 +6,7 @@ public class HurtState : State
 
     public override void EnterState()
     {
-        animator.Play("Hurt");
+        animator.SetTrigger("Hurt");
     }
 
     public override void UpdateState()

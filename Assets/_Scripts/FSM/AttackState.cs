@@ -8,7 +8,7 @@ public class AttackState : State
     {
         if (ninja.IsGrounded())
             ninja.StopHorizontalMovement();
-        animator.Play("Attack");
+        animator.SetTrigger("Attack");
     }
 
     public override void UpdateState()
