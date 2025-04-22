@@ -41,7 +41,7 @@ public class NinjaController : MonoBehaviour
         currentLives = maxLives;
         spawnPosition = transform.position;
 
-        ActionEvents.OnLivesChanged?.Invoke(currentLives);
+        UpdateLiveText();
 
         idleState = new IdleState(this, animator);
         runState = new RunState(this, animator);
@@ -97,14 +97,12 @@ public class NinjaController : MonoBehaviour
 
         return grounded;
     }
-
-
     public void TakeDamage()
     {
         if (!IsAlive || isHurting) return;
 
         currentLives--;
-        ActionEvents.OnLivesChanged?.Invoke(currentLives);
+        UpdateLiveText();
 
         if (currentLives <= 0)
         {
@@ -114,9 +112,10 @@ public class NinjaController : MonoBehaviour
         else
         {
             isHurting = true;
-            StartCoroutine(BlinkCoroutine());
             TransitionToState(hurtState);
         }
+
+        StartCoroutine(BlinkCoroutine());
     }
 
     public void Die()
@@ -152,8 +151,6 @@ public class NinjaController : MonoBehaviour
             Vector2 knockback = (transform.position - collision.transform.position).normalized * 5f;
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(knockback, ForceMode2D.Impulse);
-
-            StartCoroutine(BlinkCoroutine());
         }
     }
 
@@ -189,8 +186,14 @@ public class NinjaController : MonoBehaviour
         rb.gravityScale = 1f;
         isHurting = false;
 
-        ActionEvents.OnLivesChanged?.Invoke(currentLives);
+        UpdateLiveText();
+
 
         TransitionToState(idleState);
+    }
+
+    public void UpdateLiveText()
+    {
+        ActionEvents.OnLivesChanged?.Invoke(currentLives);
     }
 }

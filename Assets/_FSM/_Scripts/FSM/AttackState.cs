@@ -17,8 +17,6 @@ public class AttackState : State
         {
             if (ninja.IsGrounded())
                 ninja.TransitionToState(ninja.idleState);
-            else
-                ninja.TransitionToState(ninja.jumpState);
         }
     }
 }
