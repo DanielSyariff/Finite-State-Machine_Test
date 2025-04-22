@@ -7,14 +7,17 @@ public class HurtState : State
     public override void EnterState()
     {
         animator.SetTrigger("Hurt");
+        ninja.StopHorizontalMovement();
     }
 
     public override void UpdateState()
     {
-        if (ninja.IsAlive)
-            ninja.TransitionToState(ninja.idleState);
-        else
-            ninja.TransitionToState(ninja.dieState);
+        if (!ninja.isHurting)
+        {
+            if (ninja.IsAlive)
+                ninja.TransitionToState(ninja.idleState);
+            else
+                ninja.TransitionToState(ninja.dieState);
+        }
     }
 }
-

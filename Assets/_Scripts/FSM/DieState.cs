@@ -6,8 +6,7 @@ public class DieState : State
 
     public override void EnterState()
     {
-        animator.SetTrigger("Die");
-        ninja.Die();
+        animator.SetBool("Dead", true);
     }
 }
 

@@ -7,6 +7,7 @@ public class IdleState : State
     public override void EnterState()
     {
         animator.Play("Idle");
+        animator.SetBool("Dead", false);
     }
 
     public override void UpdateState()
